@@ -11,11 +11,11 @@
           {
             "enforceBuildableLibDependency": true,
             "allow": [],
-            "depConstraints": [
-              { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
-            ]
+            "depConstraints": [{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }]
           }
-        ]
+        ],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "off"
       }
     },
     {
