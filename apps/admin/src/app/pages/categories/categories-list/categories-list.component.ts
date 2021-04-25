@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@bluebits/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'admin-categories-list',
   templateUrl: './categories-list.component.html',
   styles: []
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
+  endsubs$: Subject<any> = new Subject();
 
   constructor(
     private categoriesService: CategoriesService,
@@ -20,6 +23,10 @@ export class CategoriesListComponent implements OnInit {
   ngOnInit(): void {
     this._getCategories();
   }
+  ngOnDestroy() {
+    this.endsubs$.next();
+    this.endsubs$.complete();
+  }
 
   deleteCategory(categoryId: string) {
     this.confirmationService.confirm({
@@ -27,23 +34,26 @@ export class CategoriesListComponent implements OnInit {
       header: 'Delete Category',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.categoriesService.deleteCategory(categoryId).subscribe(
-          () => {
-            this._getCategories();
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Category is deleted!'
-            });
-          },
-          () => {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: 'Category is not deleted!'
-            });
-          }
-        );
+        this.categoriesService
+          .deleteCategory(categoryId)
+          .pipe(takeUntil(this.endsubs$))
+          .subscribe(
+            () => {
+              this._getCategories();
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Category is deleted!'
+              });
+            },
+            () => {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Category is not deleted!'
+              });
+            }
+          );
       }
     });
   }
@@ -53,8 +63,11 @@ export class CategoriesListComponent implements OnInit {
   }
 
   private _getCategories() {
-    this.categoriesService.getCategories().subscribe((cats) => {
-      this.categories = cats;
-    });
+    this.categoriesService
+      .getCategories()
+      .pipe(takeUntil(this.endsubs$))
+      .subscribe((cats) => {
+        this.categories = cats;
+      });
   }
 }
