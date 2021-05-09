@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bluebits/ui": ["libs/ui/src/index.ts"],
       "@bluebits/orders": ["libs/orders/src/index.ts"],
       "@bluebits/products": ["libs/products/src/index.ts"],
       "@bluebits/users": ["libs/users/src/index.ts"],
-      "@env/*": ["environments/*"]
+      "@env/*": ["environments/*"],
+      "@bluebits/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

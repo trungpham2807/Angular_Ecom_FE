@@ -17,18 +17,12 @@
   },
   "projects": {
     "ngshop": { "tags": ["scope: client"] },
-    "ngshop-e2e": {
-      "tags": ["scope: client"],
-      "implicitDependencies": ["ngshop"]
-    },
+    "ngshop-e2e": { "tags": ["scope: client"], "implicitDependencies": ["ngshop"] },
     "admin": { "tags": ["scope: client"] },
-    "admin-e2e": {
-      "tags": ["scope: client"],
-      "implicitDependencies": ["admin"]
-    },
-    "ui": { "tags": ["scope:ui"] },
+    "admin-e2e": { "tags": ["scope: client"], "implicitDependencies": ["admin"] },
     "orders": { "tags": ["scope:orders"] },
     "products": { "tags": ["scope:products"] },
-    "users": { "tags": ["scope:users"] }
+    "users": { "tags": ["scope:users"] },
+    "ui": { "tags": [] }
   }
 }
