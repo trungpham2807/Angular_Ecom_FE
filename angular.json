@@ -70,7 +70,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/ngshop/src/**/*.ts", "apps/ngshop/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/ngshop/src/**/*.ts",
+              "apps/ngshop/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -125,19 +128,15 @@
             "tsConfig": "apps/admin/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
-            "styles": [
-              "apps/admin/src/styles.scss",
-              "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.snow.css"
-            ],
-            "scripts": ["node_modules/quill/dist/quill.js"]
+            "styles": ["apps/admin/src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "environments/environment.ts",
-                  "with": "environments/environment.prod.ts"
+                  "replace": "apps/admin/src/environments/environment.ts",
+                  "with": "apps/admin/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -182,7 +181,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/admin/src/**/*.ts", "apps/admin/src/**/*.html"]
+            "lintFilePatterns": [
+              "apps/admin/src/**/*.ts",
+              "apps/admin/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -221,6 +223,27 @@
         }
       }
     },
+    "ui": {
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "orders": {
       "projectType": "library",
       "root": "libs/orders",
@@ -230,7 +253,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/orders/src/**/*.ts", "libs/orders/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/orders/src/**/*.ts",
+              "libs/orders/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -252,7 +278,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/products/src/**/*.ts", "libs/products/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/products/src/**/*.ts",
+              "libs/products/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -274,7 +303,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/users/src/**/*.ts", "libs/users/src/**/*.html"]
+            "lintFilePatterns": [
+              "libs/users/src/**/*.ts",
+              "libs/users/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -282,28 +314,6 @@
           "outputs": ["coverage/libs/users"],
           "options": {
             "jestConfig": "libs/users/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "ui": {
-      "projectType": "library",
-      "root": "libs/ui",
-      "sourceRoot": "libs/ui/src",
-      "prefix": "bluebits",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui"],
-          "options": {
-            "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
           }
         }
