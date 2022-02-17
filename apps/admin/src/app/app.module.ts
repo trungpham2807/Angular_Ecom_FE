@@ -16,9 +16,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {Table, TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
-import {MessageService} from 'primeng/api'
+import {MessageService, ConfirmationService} from 'primeng/api'
 import { CategoriesService } from '@bluebits/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 const UX_MODULE = [
   CardModule,
@@ -27,6 +28,7 @@ const UX_MODULE = [
   TableModule,
   InputTextModule,
   ToastModule,
+  ConfirmDialogModule,
 ]
 const routes: Routes = [
   {
@@ -56,7 +58,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
     ...UX_MODULE,
   ],
-  providers: [CategoriesService, MessageService],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
