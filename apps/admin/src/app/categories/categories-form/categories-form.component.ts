@@ -24,7 +24,7 @@ export class CategoriesFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       icon: ['', Validators.required],
-      // color: ['']
+      color: ['#fff']
     });
     this._checkEditMode();
   }
@@ -38,8 +38,8 @@ export class CategoriesFormComponent implements OnInit {
     const category : Category = {
       id: this.currentCategoryId,
       name: this.categoryForm.name.value,
-      icon: this.categoryForm.icon.value
-
+      icon: this.categoryForm.icon.value,
+      color: this.categoryForm.color.value
     }
     if(this.editMode){
       this._updateCategory(category);
@@ -57,6 +57,7 @@ export class CategoriesFormComponent implements OnInit {
           // data already show
           this.categoryForm.name.setValue(category.name);
           this.categoryForm.icon.setValue(category.icon);
+          this.categoryForm.color.setValue(category.color);
         })
   } });
   }

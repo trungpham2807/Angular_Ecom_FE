@@ -20,6 +20,7 @@ import {MessageService, ConfirmationService} from 'primeng/api'
 import { CategoriesService } from '@bluebits/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ColorPickerModule} from 'primeng/colorpicker';
 
 const UX_MODULE = [
   CardModule,
@@ -29,6 +30,7 @@ const UX_MODULE = [
   InputTextModule,
   ToastModule,
   ConfirmDialogModule,
+  ColorPickerModule,
 ]
 const routes: Routes = [
   {

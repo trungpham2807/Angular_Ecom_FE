@@ -42,6 +42,10 @@
                         <small *ngIf="categoryForm.icon.invalid && isSubmitted" class="p-error">Icon is required.</small>
 
                       </div>
+                      <div class="p-field p-col">
+                          <label font="color">Color</label><br/>
+                          <p-colorPicker formControlName="color"></p-colorPicker>
+                      </div>
                 </div>
                </form>
             </div>
