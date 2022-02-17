@@ -4,7 +4,9 @@
 <!-- Step 3: Send data -> Backend (service) -->
 <p-toast></p-toast>
 <div class="div-admin-page">
-    <p-card header="Add Category" styleClass="p-datatable-gridlines" subheader="List of categories">Content
+    <p-card [header]="editMode ? 'Edit Category' : 'Add Category'" 
+    styleClass="p-datatable-gridlines" 
+    subheader="Add or Edit here">
         <div class="p-grid p-mb-5">
             <div class="p-col">
                 <p-toolbar>
@@ -12,7 +14,7 @@
                     <div class="p-toolbar-group-right">
                         <p-button 
                         styleClass="p-button-primary p-mr-2"
-                        label="Create"
+                        [label]="editMode ? 'Update': 'Create'"
                         icon="pi pi-plus"
                         (click)="onSubmit()"
                         ></p-button>
